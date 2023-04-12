@@ -2,7 +2,7 @@
 // display current time
 var timeDisplayEl = $('#currentDay');
 function displayTime() {
-  var rightNow = dayjs().format('[Current Date&Time:] MMM DD, YYYY [ at ] hh:mm:ss a');
+  var rightNow = dayjs().format('[Current Date & Time:] MMM DD, YYYY [ at ] hh:mm:ss a');
   timeDisplayEl.text(rightNow);
 };
 displayTime();
