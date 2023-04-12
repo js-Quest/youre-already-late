@@ -12,7 +12,7 @@ setInterval(displayTime, 1000);
 
 
 // function for save button
-$('.saveBtn').click(function (event) {
+$('.saveBtn').click(function() {
   console.log(this);
   var description = $(this).siblings('.description').val();
   var rowTime = $(this).parent().attr('id');
