@@ -5,7 +5,7 @@ This is a simple calendar application that allows a user to save events for each
 
 ## Installation
 
-Click on the deployed link:
+Click on the deployed link: https://js-quest.github.io/youre-already-late/
 
 
 ## Usage/Examples
