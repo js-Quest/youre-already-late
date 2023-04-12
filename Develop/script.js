@@ -1,7 +1,6 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-console.log(dayjs());
 
 var saveBtnEl = $('saveBtn');
 var whenEl = $('when');
@@ -20,10 +19,13 @@ setInterval(displayTime, 1000);
 
   // TODO: Add a listener for click events on the save button. This code should
 
-  // $('saveBtn').on('click', function (event) {
-  //   var description = $('description');
-  //   localStorage.setItem("description", description);
-  // }
+  $('.saveBtn').click(function(event) {
+    console.log(this);
+    var description = $(this).siblings('.description').val();
+    var rowTime = $(this).parent().attr('id');
+    console.log(rowTime, description);
+    localStorage.setItem(rowTime, description);
+  });
 
 
   // use the id in the containing time-block as a key to save the user input in
@@ -33,18 +35,43 @@ setInterval(displayTime, 1000);
   // useful when saving the description in local storage?
   //
   // TODO: Add code to apply the past, present, or future class to each time
-var hour9 = dayjs().hour(9);
-var hour10 = dayjs().hour(10);
-  var whatTime = function() {
-    if (dayjs().isBetween(hour9, hour10)) {
-      $('#hour-9').addClass("present");
-    } else if 
-      (dayjs().isAfter(hour10)) {
-      $('#hour-9').addClass("past");
-      } else {
-      $('#hour-9').addClass("future");
-      }
+
+  $('.time-block').each(function() {
+    var currentTime = dayjs().hour();
+    console.log(currentTime);
+
+    var rowHour = parseInt($(this).attr('id').split('-')[1]);
+    
+    
+    console.log(typeof(rowHour));
+    if (rowHour === currentTime) {
+      $(this).addClass("present");
+    } else if (rowHour > currentTime) {
+      $(this).addClass("future");
+    } else {
+      $(this).addClass("past");
     }
+  });
+
+
+// $('#hour-9 .description').val(localStorage.getItem("hour-9"));
+
+for (i=9; i<18; i++) {
+  $(`#hour-${i} .description`).val(localStorage.getItem(`hour-${i}`));
+};
+
+// var hour9 = dayjs().hour(9);
+// var hour10 = dayjs().hour(10);
+//   var whatTime = function() {
+//     if (dayjs().isBetween(hour9, hour10)) {
+//       $('#hour-9').addClass("present");
+//     } else if 
+//       (dayjs().isAfter(hour10)) {
+//       $('#hour-9').addClass("past");
+//       } else {
+//       $('#hour-9').addClass("future");
+//       }
+//     };
   
 
   // $(document).ready(function () {
