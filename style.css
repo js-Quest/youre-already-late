@@ -1,6 +1,7 @@
 body {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
+  font-family: 'Cuprum', sans-serif;;
+  font-size: 18px;
+  background-color: rgb(247, 210, 178);
 }
 
 textarea {
@@ -57,3 +58,4 @@ textarea {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
 }
+
